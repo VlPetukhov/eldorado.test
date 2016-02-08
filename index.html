@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        body {
+            width: 600px;
+            margin: auto;
+        }
+        #header {
+            background-color: #ccc;
+            padding-left: 30px;
+            margin: 0;
+        }
+        #header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        #header ul {
+            padding-left: 50px;
+        }
+        #calc {
+            text-align: center;
+            width: 100%;
+        }
+        #calc .wideInput {
+            width: 90%;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+<h1>Calculator</h1>
+<p>This is the simplest AJAX calculator. Now it performs following operations:
+<ul>
+    <li>Addition (+)</li>
+    <li>Subtraction (-)</li>
+    <li>Multiplication (*)</li>
+    <li>Division (/)</li>
+    <li>Power (^)</li>
+</ul>
+The expression could have groping operators by parentheses.
+</p>
+</div>
+<form action="#" method="POST" id="calc">
+    <input type="text" name="expr" placeholder="Input expression... " class="wideInput" id="calcInput">
+    <p><input type="submit" value="Calculate!"> </p>
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+    (function($){
+        var form = $('#calc'),
+            input = form.find('#calcInput'),
+            callback = $('callback');
+
+        form.on('submit', function( e ){
+            e.preventDefault();
+
+            var value = input.val();
+            $.ajax({
+                url: 'calc_api.php',
+                method: 'POST',
+                jsonp: 'callback',
+                dataType: 'jsonp',
+                data: {expr: value},
+                success: function(data)
+                    {
+                        console.log( input );
+                        console.log( data  );
+                        if ( data.msg ) {
+                            input.val(data.msg);
+                        }
+                    }
+            });
+        });
+    })(jQuery);
+    function response( data ) {
+        console.log( data );
+    }
+</script>
+</body>
+</html>
