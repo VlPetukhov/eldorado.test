@@ -4,10 +4,10 @@
  */
 
 //AJAX requests only
-if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
-    header("HTTP/1.0 404 Not Found");
-    die();
-}
+//if ($_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
+//    header("HTTP/1.0 404 Not Found");
+//    die();
+//}
 
 include 'includes/autoload.php';
 
