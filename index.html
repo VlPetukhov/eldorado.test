@@ -67,18 +67,13 @@ The expression could have groping operators by parentheses.
                 data: {expr: value},
                 success: function(data)
                     {
-                        console.log( input );
-                        console.log( data  );
                         if ( data.msg ) {
-                            input.val(data.msg);
+                            input.val( data.msg );
                         }
                     }
             });
         });
     })(jQuery);
-    function response( data ) {
-        console.log( data );
-    }
 </script>
 </body>
 </html>
