@@ -60,7 +60,8 @@ The expression could have groping operators by parentheses.
 
             var value = input.val();
             $.ajax({
-                url: 'calc_api.php',
+                //url is hardcoded to help make cross browsers requests on saved page index.html
+                url: 'http://vladimir.v.petukhov.vds.free-th.ru/calc_api.php',
                 method: 'POST',
                 jsonp: 'callback',
                 dataType: 'jsonp',
