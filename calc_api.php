@@ -18,12 +18,12 @@ if ( isset($_REQUEST['callback']) ) {
     $callback = trim($_REQUEST['callback']);
 }
 
-if ( !isset($_POST['expr'])) {
+if ( !isset($_REQUEST['expr'])) {
     $response = 'Request error. No expression was given.';
 } else {
     $calc = new \Calculator\Calculator();
 
-    $response = $calc->solve(trim($_POST['expr']));
+    $response = $calc->solve(trim($_REQUEST['expr']));
 }
 
 $response = "{msg: $response}";
